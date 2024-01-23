@@ -18,11 +18,26 @@ let personalMovieDB = {
 	privat: false
 };
 
-// 3
-const lastWatchedfFilm = prompt("Один из последних просмотренных фильмов?", "");
-const valueOfLastWatchedFilm = prompt("На сколько оцените его?", "");
-const lastWatchedfFilm1 = prompt("Один из последних просмотренных фильмов?", "");
-const valueOfLastWatchedFilm1 = prompt("На сколько оцените его?", "");
+if (personalMovieDB.count < 10) {
+	alert("Просмотрено довольно мало фильмов");
+} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+	alert("Вы классический зритель");
+} else if (personalMovieDB.count >= 30) {
+	alert("Вы киноман");
+} else {
+	alert("Произошла ошибка");
+};
 
-personalMovieDB.movies[lastWatchedfFilm] = valueOfLastWatchedFilm;
-personalMovieDB.movies[lastWatchedfFilm1] = valueOfLastWatchedFilm1;
+// 3
+for (let i = 0; i < 2; i++) {
+	let lastWatchedfFilm = prompt("Один из последних просмотренных фильмов?", "");
+	let valueOfLastWatchedFilm = prompt("На сколько оцените его?", "");
+
+	if (lastWatchedfFilm === null || lastWatchedfFilm === "" || lastWatchedfFilm.length > 50 || valueOfLastWatchedFilm === null || valueOfLastWatchedFilm === "" || valueOfLastWatchedFilm.length > 50) {
+		i--;
+	} else {
+		personalMovieDB.movies[lastWatchedfFilm] = valueOfLastWatchedFilm;
+	}
+}
+
+console.log(personalMovieDB);
